@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{user['first_name']}}</h1>
+    <p><a href="/create_recipe">Create</a></p>
+    <p><a href="/logout">Logout</a></p>
+    <div>
+        <table>
+            <th>
+                <tr>
+                    <th>Name</th>
+                    <th>Under 30 Minutes?</th>
+                    <th>Actions</th>
+                </tr>
+            </th>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{recipe.name}}</td>
+                <td>{{recipe.under_30}}</td>
+                <td>
+                    <a href="/show_recipe/{{recipe.id}}">view instructions</a>
+                    {% if recipe.user_id == user['id']: %}
+                        <a href="/edit_recipe/{{recipe.id}}">edit</a>
+                        <a href="/delete_recipe/{{recipe.id}}">delete</a>
+                    {% endif%}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex justify-content-evenly">
+        <div>
+            <h1>Login</h1>
+            <form action="/user/login" method="post">
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                    {% for message in get_flashed_messages(category_filter=["err_users_email_login"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="pw">Password</label>
+                    <input type="text" name="pw" id="pw">
+                    {% for message in get_flashed_messages(category_filter=["err_users_pw_login"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <button>Login</button>
+            </form>
+        </div>
+        <div>
+            <h1>Registration</h1>
+            <form action="/user/create" method="post">
+                <div class="mb-3">
+                    <label for="first_name">First Name</label>
+                    <input type="text" name="first_name" id="first_name">
+                    {% for message in get_flashed_messages(category_filter=["err_users_first_name"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="last_name">Last name</label>
+                    <input type="text" name="last_name" id="last_name">
+                    {% for message in get_flashed_messages(category_filter=["err_users_last_name"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                    {% for message in get_flashed_messages(category_filter=["err_users_email"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="pw">Password</label>
+                    <input type="text" name="pw" id="pw">
+                    {% for message in get_flashed_messages(category_filter=["err_users_pw"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_pw">Confirm Password</label>
+                    <input type="text" name="confirm_pw" id="confirm_pw">
+                    {% for message in get_flashed_messages(category_filter=["err_users_confirm_pw"])%}
+                    <p class="alert alert danger">{{message}}</p>
+                    {% endfor %}
+                </div>
+                <button>Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
